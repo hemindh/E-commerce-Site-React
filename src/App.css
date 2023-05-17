@@ -1,38 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Cardo&family=Cinzel:wght@600&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,100&family=Prompt&display=swap");
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+
+
+body {
+
+  background: linear-gradient(rgb(15, 15, 15) , rgb(156, 156, 13) , rgb(13, 44, 5) , rgb(48, 68, 3) , rgb(0, 0, 0));
+  background-repeat: no-repeat;
+  color: white;
+  font-family: "Cardo", serif;
+  /* width: 100vw; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+
+.Header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  float: left;
+  font-family: "Cardo", serif;
+  font-weight: 900;
+  padding: 20px;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  padding-left: 30px;
+  padding-top: 15px;
+  border-bottom: 1px solid white;
+}
+
+.Product_main_container {
+  display: flex;
+  flex-wrap: wrap;
+  /* width: 100vw; */
+}
+
+.Products_List {
+  width: 21rem;
+  height: 470px;
+  margin: 40px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  padding: 20px;
+}
+
+.card-img-top {
+  width: 150px;
+  height: 150px;
+}
+
+.card-title {
+  padding-top: 10px;
+  font-size: 17px;
+}
+
+.P_price {
+  color: red;
+  font-size: 20px;
+}
+
+.P_rate {
+  padding-top: 7px;
+  font-weight: bold;
+}
+
+.btn-success {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.btn-success:hover {
+  background-color: rgb(19, 80, 19);
+  font-weight: bold;
+}
+
+ .P_category {
+  text-transform: capitalize;
+}
+
+/* Add to cart Logo Design  */
+
+.Image_Add_To_cart {
+  width: 100px;
+  height: 60px;
+  position: absolute;
+  right: 70px;
+  color: white;
+  background: none;
+}
+
+.Count {
+  position: absolute;
+  right: 60px;
+  border: 3px solid white;
+  background-color: green;
+  border-radius: 50%;
+  width: 45px;
+  padding: 8px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+.Count{
+  text-decoration: none;
+  font-size: 17px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.shop{
+  background-image: none;
+  height: 50px;
+  width: 50px;
+}
+
+.shop_Bazar{
+  padding-left: 20px;
+  margin-top: 10px;
+  font-weight: 900;
+  color: burlywood;
 }
