@@ -4,15 +4,13 @@
 }
 
 
-
-
-
 body {
 
-  background: linear-gradient(rgb(15, 15, 15) , rgb(156, 156, 13) , rgb(13, 44, 5) , rgb(48, 68, 3) , rgb(0, 0, 0));
+  background: linear-gradient(rgb(0, 0, 0) , rgb(156, 156, 13) , rgb(0, 0, 0) , rgb(156, 156, 13) , rgb(0, 0, 0));
   background-repeat: no-repeat;
   color: white;
   font-family: "Cardo", serif;
+
   /* width: 100vw; */
 }
 
@@ -96,6 +94,10 @@ body {
   background: none;
 }
 
+.Cart_Logo{
+  cursor: pointer;
+}
+
 .Count {
   position: absolute;
   right: 60px;
@@ -125,3 +127,25 @@ body {
   font-weight: 900;
   color: burlywood;
 }
+
+.Modal_order{
+  background-color: green;
+  color: white;
+  font-weight: 900;
+  height: 40px;
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+
+.Modal_close{
+  background-color: rgb(202, 80, 80);
+  color: white;
+  font-weight: 900;
+  height: 40px;
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+

@@ -3,9 +3,11 @@ import axios from "axios";
 import "../App.css";
 
 const ProductList = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // const [count , setCount] = useState(0);
+
 
   useEffect(() => {
     axios
@@ -18,17 +20,23 @@ const ProductList = () => {
       .catch((err) => {
         setError(err);
         setLoading(false);
-        //    console.log(err);
       });
   }, []);
 
-
   const addToCart = (id) => {
-    
-    console.log("Product Id :-" , id);
-    
-    
-  }
+    console.log("Product Id :-" , id );
+  };
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <>
@@ -38,15 +46,17 @@ const ProductList = () => {
         </div>
 
         {error && (
-          <div style={{color:"red"}}>{`There is a problem fetching the post data - ${error}`}</div>
+          <div
+            style={{ color: "red" }}
+          >{`There is a problem fetching the post data - ${error}`}</div>
         )}
 
         <ul className="Product_main_container">
           {data &&
             data.map((product) => (
               <>
-                <div className="P_main_container">
-                  <div key={product.id} className="Products_List">
+                <div className="P_main_container" key={product.id}>
+                  <div className="Products_List">
                     <h4 className="P_category">{product.category}</h4>
                     <img
                       src={product.image}
@@ -57,7 +67,7 @@ const ProductList = () => {
                     <div className="card-body">
                       <h5 className="P_rate">Rating : {product.rating.rate}</h5>
                       <h5 className="card-title">{product.title}</h5>
-                      <span className="P_price">Price : {product.price} $</span>
+                      <span className="P_price">Price : ${product.price} </span>
                       <br />
                       <button
                         className="btn btn-success"
