@@ -1,45 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "../App.css";
-import axios from "axios";
+import { cartProduct } from "../Components/ProductList";
+
 
 const Modal = () => {
 
-     const [data , setData] = useState([]);
+  
+  
+  const {cartList, setCartList} = useContext(cartProduct)
+  
+  const DeleteItem = (id) => {
+    console.log({cartList, id});
+    const NewArray = cartList.filter(items => items.id !== id);
+    console.log("newArray", NewArray
+    );
+    setCartList(NewArray);
+   }
 
-     useEffect(() => {
-        axios
-          .get("https://fakestoreapi.com/products")
-          .then((res) => {
-            console.log(res);
-            setData(res.data);
-          })
-          
-      }, []);
-
-      const removeToCart = (id) => {
-        const NewArray = data.filter(product => product.id !== id);
-        setData(NewArray)
-      }
-    
-  let message = "Your Ordered is Delivered Successfully !!!";
-
-  const handleSuccess = () => {
-    alert(`${message}`);
-  };
 
   return (
     <>
       <div
         className="modal fade"
         id="exampleModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-         <div className="modal-dialog"> 
-           <div className="modal-content"> 
-             <div className="modal-header"> 
-              {/* <h5 style={{color : "black" , fontWeight : "bold"}}>Total Price :</h5> <h3 className="modal-title" style={{color:"red" , fontWeight : "bold"}}>$0.00</h3> */}
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              {/* <h5 style={{color : "black" , fontWeight : "bold"}}> Price :</h5> <h3 className="modal-title" style={{color:"red" , fontWeight : "bold"}}>$0.00</h3> */}
               <button
                 type="button"
                 className="btn-close"
@@ -47,34 +38,40 @@ const Modal = () => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body" style={{color : "black"}}>
-            {data &&
-            data.map((product) => (
-              <>
-                <div className="P_main_container" key={product.id}>
-                    {/* <h4 className="P_category">{product.category}</h4>
-                    <img
-                      src={product.image}
-                      className="card-img-top"
-                      alt="title"
-                      id="P_image"
-                    />
-                    <div className="card-body">
-                      <h5 className="P_rate">Rating : {product.rating.rate}</h5>
-                      <h5 className="card-title">{product.title}</h5>
-                      <span className="P_price">Price : ${product.price} </span>
-                      <br />
-                      <button
-                        className="btn btn-success"
-                        style={{backgroundColor : "red" , border : '3px solid white' , color : "black"}}
-                        onClick={() => removeToCart(product.id)}
-                      >
-                        Remove to Cart
-                      </button> */}
-                    {/* </div> */}
-                  </div>
-              </>
-            ))}
+            <div className="modal-body" style={{ color: "black" }}>
+           
+
+             <table>
+          <thead
+            style={{
+              width: "100%",
+              backgroundColor: "black",
+              color: "white",
+            }}
+          >
+            <th style={{padding : "5px"}}>Id</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th style={{width : "175px" , color : "red"}}>Remove the Product</th>
+          </thead>
+          
+            {cartList &&
+            cartList.map((product, i) => (
+              
+              
+              <tr key={product.id} style={{backgroundColor : "Lightgray" }}>
+              <td style={{padding : '16px' , textAlign : "center"}}>{product.id}</td>
+              <td style={{padding : '16px' , textAlign : "center"}}>{product.title}</td>
+              <td style={{padding : '16px' , textAlign : "center" , color : "red" , fontWeight : "900"}}>${product.price}</td>
+              <td>
+
+              <button onClick={() => DeleteItem(product.id)} type="button" className="btn btn-danger">Remove to cart</button>
+              </td>
+              </tr>
+              
+              ))}
+            </table> 
+          
             </div>
             <div className="modal-footer">
               <button
@@ -88,12 +85,11 @@ const Modal = () => {
                 type="button"
                 className="btn btn-primary"
                 data-bs-dismiss="modal"
-                onClick={handleSuccess}
               >
                 Order
               </button>
             </div>
-          </div> 
+          </div>
         </div>
       </div>
     </>

@@ -6,7 +6,7 @@
 
 body {
 
-  background: linear-gradient(rgb(0, 0, 0) , rgb(156, 156, 13) , rgb(0, 0, 0) , rgb(156, 156, 13) , rgb(0, 0, 0));
+  background: linear-gradient(rgb(0, 0, 0) , rgb(156, 156, 13) , rgb(0, 0, 0) , rgb(156, 156, 13) , rgb(39, 37, 37));
   background-repeat: no-repeat;
   color: white;
   font-family: "Cardo", serif;
@@ -19,13 +19,14 @@ body {
 
 
 .Header {
+  background: linear-gradient( rgb(20, 3, 3)  , rgb(0, 0, 0)  );
   display: flex;
   float: left;
   font-family: "Cardo", serif;
   font-weight: 900;
   padding: 20px;
   width: 100%;
-  color: rgb(255, 255, 255);
+  color: black;
   padding-left: 30px;
   padding-top: 15px;
   border-bottom: 1px solid white;
@@ -41,7 +42,8 @@ body {
   width: 21rem;
   height: 470px;
   margin: 40px;
-  border: 1px solid gray;
+  /* border: 1px solid rgb(155, 17, 17); */
+  background: linear-gradient( rgb(255, 255, 255) ,  rgb(255, 255, 255) , rgb(0, 0, 0)  );
   border-radius: 5px;
   margin-bottom: 20px;
   background-color: rgb(255, 255, 255);
@@ -125,7 +127,7 @@ body {
   padding-left: 20px;
   margin-top: 10px;
   font-weight: 900;
-  color: burlywood;
+  color: white;
 }
 
 .Modal_order{

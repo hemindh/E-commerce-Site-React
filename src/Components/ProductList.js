@@ -1,13 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import "../App.css";
+import Modal from "../Modal/Modal";
+import Header from "./Header";
+
+// export const CartCategory = createContext()
+export const cartProduct = createContext()
+
+// export const Price = createContext()
+// export const Title = createContext()
+
+
+
+
+
 
 const ProductList = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  // const [count , setCount] = useState(0);
 
+  const [cartList, setCartList] = useState([]);
+
+
+ 
+  // const Heading = "Shopping Bazar";
+
+
+  
 
   useEffect(() => {
     axios
@@ -23,23 +43,23 @@ const ProductList = () => {
       });
   }, []);
 
-  const addToCart = (id) => {
-    console.log("Product Id :-" , id );
+
+
+  const addToCart = (product) => {
+    // console.log("Product Id :-" , id );
+    const temp = [...cartList]
+    temp.push(product)
+    setCartList(temp)
   };
 
-
-
-
-
-
-
-
-
-
+  
 
 
   return (
     <>
+<cartProduct.Provider value={{cartList, setCartList}}>
+      <Header />
+
       <div className="App">
         <div className="p_heading">
           {loading && <div>❤️‍🔥↻ Loading......</div>}
@@ -47,9 +67,9 @@ const ProductList = () => {
 
         {error && (
           <div
-            style={{ color: "red" }}
+          style={{ color: "red" }}
           >{`There is a problem fetching the post data - ${error}`}</div>
-        )}
+          )}
 
         <ul className="Product_main_container">
           {data &&
@@ -69,12 +89,19 @@ const ProductList = () => {
                       <h5 className="card-title">{product.title}</h5>
                       <span className="P_price">Price : ${product.price} </span>
                       <br />
-                      <button
+                     
+
+                      <button 
                         className="btn btn-success"
-                        onClick={() => addToCart(product)}
+                        onClick={() => addToCart( product )}
                       >
                         Add To Cart
-                      </button>
+                      </button> 
+
+
+                       <Modal value={[product.id , product.category , product.price , product.title]} />
+
+                      
                     </div>
                   </div>
                 </div>
@@ -82,6 +109,7 @@ const ProductList = () => {
             ))}
         </ul>
       </div>
+      </cartProduct.Provider>
     </>
   );
 };
