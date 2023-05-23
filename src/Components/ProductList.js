@@ -3,12 +3,10 @@ import axios from "axios";
 import "../App.css";
 import Modal from "../Modal/Modal";
 import Header from "./Header";
+import Star from "../Single/Star";
 
-// export const CartCategory = createContext()
 export const cartProduct = createContext()
 
-// export const Price = createContext()
-// export const Title = createContext()
 
 
 
@@ -23,7 +21,6 @@ const ProductList = () => {
   const [cartList, setCartList] = useState([]);
 
 
- 
   // const Heading = "Shopping Bazar";
 
 
@@ -57,6 +54,8 @@ const ProductList = () => {
 
   return (
     <>
+
+
 <cartProduct.Provider value={{cartList, setCartList}}>
       <Header />
 
@@ -78,14 +77,17 @@ const ProductList = () => {
                 <div className="P_main_container" key={product.id}>
                   <div className="Products_List">
                     <h4 className="P_category">{product.category}</h4>
+          
                     <img
                       src={product.image}
                       className="card-img-top"
                       alt="title"
                       id="P_image"
                     />
+
                     <div className="card-body">
-                      <h5 className="P_rate">Rating : {product.rating.rate}</h5>
+                      {/* <h5 className="P_rate">Rating : {product.rating.rate}</h5> */}
+                      <Star value={product.rating.rate} />
                       <h5 className="card-title">{product.title}</h5>
                       <span className="P_price">Price : ${product.price} </span>
                       <br />
@@ -99,8 +101,8 @@ const ProductList = () => {
                       </button> 
 
 
-                       <Modal value={[product.id , product.category , product.price , product.title]} />
-
+                       <Modal  />
+                      
                       
                     </div>
                   </div>

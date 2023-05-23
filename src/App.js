@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import ProductList from './Components/ProductList';
-// import Header from './Components/Header';
+import {Routes , Route} from 'react-router-dom'
+import SinglePage from './Single/SinglePage';
 
 
 
@@ -13,8 +14,10 @@ function App() {
   
   return (
     <div className="App">
-        {/* <Header /> */}
-        <ProductList />
+      <Routes>
+        <Route path="/" element={<ProductList />} />
+        <Route path="/product/:id" element={<SinglePage />} />
+      </Routes>
     </div>
   );
 }

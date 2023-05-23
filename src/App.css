@@ -24,7 +24,7 @@ body {
   float: left;
   font-family: "Cardo", serif;
   font-weight: 900;
-  padding: 20px;
+  padding: 25px;
   width: 100%;
   color: black;
   padding-left: 30px;
@@ -43,7 +43,7 @@ body {
   height: 470px;
   margin: 40px;
   /* border: 1px solid rgb(155, 17, 17); */
-  background: linear-gradient( rgb(255, 255, 255) ,  rgb(255, 255, 255) , rgb(0, 0, 0)  );
+  background: linear-gradient( rgb(255, 255, 255) ,  rgb(255, 253, 253) , #141414  );
   border-radius: 5px;
   margin-bottom: 20px;
   background-color: rgb(255, 255, 255);
@@ -89,32 +89,31 @@ body {
 
 .Image_Add_To_cart {
   width: 100px;
-  height: 60px;
+  height: 70px;
   position: absolute;
   right: 70px;
   color: white;
-  background: none;
 }
 
-.Cart_Logo{
-  cursor: pointer;
-}
+
 
 .Count {
   position: absolute;
-  right: 60px;
-  border: 3px solid white;
+  right: 50px;
+  border: 3px solid rgb(255, 255, 255);
   background-color: green;
   border-radius: 50%;
+  height: 50px;
   width: 45px;
-  padding: 8px;
+  padding: 10px;
   color: white;
 }
 
 
 .Count{
   text-decoration: none;
-  font-size: 17px;
+  font-size: 18px;
+  font-weight: 900;
 }
 
 .shop{
@@ -142,7 +141,7 @@ body {
 
 
 .Modal_close{
-  background-color: rgb(202, 80, 80);
+  /* background-color: rgb(202, 80, 80); */
   color: white;
   font-weight: 900;
   height: 40px;
@@ -151,3 +150,139 @@ body {
   border-radius: 5px;
 }
 
+
+
+
+
+
+
+
+/* cart map styling  */
+
+.table_container{
+  justify-content: center;
+  align-items: center;
+    font-weight: 700  ;
+}
+
+.table_head{
+  background-color: rgb(219, 127, 51);
+  font-size: 19px;
+}
+
+.P_id{
+  text-align: center;
+  padding: 10px;
+}
+
+.title{
+  text-align: center;
+  padding: 10px;
+}
+
+
+.P_image{
+  text-align: center;
+  padding: 11px;
+  height: 120px;
+  width: 130px;
+  background: none;
+}
+
+.P_price_value{
+  text-align: center;
+  font-size: 25px;
+  color: red;
+  font-weight: 900;
+}
+
+
+
+
+
+/* Total Amount  */
+
+.Total_amount{
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.Qun{
+  font-weight: 900;
+  font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.flex{
+  display: flex;
+padding-left: 5px;
+padding-right: 5px;
+
+}
+
+.Minus{
+  background-color: rgb(201, 40, 40);
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  width: 50px;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.Plus{
+  background-color: rgb(29, 104, 29);
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  width: 50px;
+  border: 2px solid black;
+cursor: pointer;
+
+}
+
+
+/* //Total price of product  */
+
+.Product_price_total{
+  font-weight: 900;
+  /* padding-left: 100px; */
+  float: right;
+}
+
+.Total_value{
+  color: rgb(4, 146, 16);
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+.Product_price_total{
+  background-color: rgb(197, 192, 192);
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+}
+
+.star_icon{
+  padding-top: 10px;
+}
+
+.icon{
+  color: #ffc107;
+}
+
+
+
+
+/* //Single product page  */
+
+.Main_container_for_single_product{
+  background-color: antiquewhite;
+  color: black;
+}

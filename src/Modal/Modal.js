@@ -1,24 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../App.css";
 import { cartProduct } from "../Components/ProductList";
-
+import AmountToggle from "../AmountToggle/AmountToggle";
+import TotalAmount from "../AmountToggle/TotalAmount";
 
 const Modal = () => {
+  const { cartList, setCartList } = useContext(cartProduct);
+  const [amount, setAmount] = useState(1);
+  let totalPrice = 0;
 
-  
-  
-  const {cartList, setCartList} = useContext(cartProduct)
-  
   const DeleteItem = (id) => {
-    console.log({cartList, id});
-    const NewArray = cartList.filter(items => items.id !== id);
-    console.log("newArray", NewArray
-    );
+    console.log("cartList", cartList);
+    console.log("id", id);
+    const NewArray = cartList.filter((items) => items.id !== id);
+    console.log("newArray", NewArray);
     setCartList(NewArray);
-   }
+  };
 
+  const setIncrease = (product) => {
+    console.log("clicking the product" , product.id)
+    setAmount(amount + 1);
+  };
+
+  const setDecrease = (product) => {
+    console.log("clicking - product" , product.id)
+    setAmount(amount > 1 ? amount - 1 : amount);
+  };
 
   return (
+    
     <>
       <div
         className="modal fade"
@@ -27,10 +37,10 @@ const Modal = () => {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-lg">
           <div className="modal-content">
             <div className="modal-header">
-              {/* <h5 style={{color : "black" , fontWeight : "bold"}}> Price :</h5> <h3 className="modal-title" style={{color:"red" , fontWeight : "bold"}}>$0.00</h3> */}
+              <h3 style={{ color: "black", fontWeight: "bold" }}>Cart_Items</h3>
               <button
                 type="button"
                 className="btn-close"
@@ -39,40 +49,64 @@ const Modal = () => {
               ></button>
             </div>
             <div className="modal-body" style={{ color: "black" }}>
-           
+              <table>
+                <thead className="table_head">
+                  <th style={{ padding: "5px" }}>Id</th>
+                  <th>Image</th>
+                  <th>Title</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th style={{ width: "175px", color: "black" }}>
+                    Remove the Product
+                  </th>
+                </thead>
 
-             <table>
-          <thead
-            style={{
-              width: "100%",
-              backgroundColor: "black",
-              color: "white",
-            }}
-          >
-            <th style={{padding : "5px"}}>Id</th>
-            <th>Title</th>
-            <th>Price</th>
-            <th style={{width : "175px" , color : "red"}}>Remove the Product</th>
-          </thead>
-          
-            {cartList &&
-            cartList.map((product, i) => (
-              
-              
-              <tr key={product.id} style={{backgroundColor : "Lightgray" }}>
-              <td style={{padding : '16px' , textAlign : "center"}}>{product.id}</td>
-              <td style={{padding : '16px' , textAlign : "center"}}>{product.title}</td>
-              <td style={{padding : '16px' , textAlign : "center" , color : "red" , fontWeight : "900"}}>${product.price}</td>
-              <td>
+                {cartList &&
+                  cartList.map((product, i) => {
+                    totalPrice += product.price * amount
+                  return (
+                    
+                    
+                      <tr key={i + 1} className="table_container">
+                        <td className="P_id">{i + 1}</td>
+                        <img
+                          className="P_image"
+                          src={product.image}
+                          alt="title"
+                        />
+                        <td className="title">{product.title}</td>
+                        <td>
+                          <td>
+                            <AmountToggle
+                              amount={amount}
+                              setDecrease={() => setDecrease(product)}
+                              setIncrease={() => setIncrease(product)}
+                            />
+                          </td>
+                        </td>
+                        <td className="P_price_value">
+                          ${product.price.toFixed(2) * amount}
+                        </td>
+                        <td>
+                          <button
+                            onClick={() => DeleteItem(product.id)}
+                            type="button"
+                            className="btn btn-danger"
+                          >
+                            Remove to cart
+                          </button>
+                        </td>
+                      </tr>
+                    
+                    )})}
+              </table>
 
-              <button onClick={() => DeleteItem(product.id)} type="button" className="btn btn-danger">Remove to cart</button>
-              </td>
-              </tr>
+                    <hr />
+             
+              <TotalAmount   totalPrice={totalPrice}  />
               
-              ))}
-            </table> 
-          
             </div>
+
             <div className="modal-footer">
               <button
                 type="button"

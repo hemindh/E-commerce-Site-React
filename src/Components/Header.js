@@ -19,16 +19,17 @@ const Header = () => {
         <div className="Header">
           <div
             className="Cart_Logo"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            
           >
             <img
               alt="Logo"
-              src="https://www.pngall.com/wp-content/uploads/5/Empty-Red-Shopping-Cart-PNG.png"
+              src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9zdGF0aWMvaW1hZ2VzL3dlYnNpdGUvMjAyMy0wNC92OTMyLW5pbmctNTEucG5n.png?s=OjEaGbUsid6O2_ExVefK4f8xzZ03nj1DClhzKt_keR8"
               className="Image_Add_To_cart"
+             
             />
 
-            <button href="/" className="Count">
+            <button href="/" className="Count"  data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
               {cartList.length}
             </button>
             <img
